@@ -32,12 +32,8 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    'vendor/lib64/libsec-ril.so': blob_fixup()
+    'vendor/lib64/libsec-ril-impl.so': blob_fixup()
         .binary_regex_replace(b'ril.dds.call.ongoing', b'vendor.calls.slot_id')
-        .sig_replace(
-            '60 0e 40 f9 82 0c 80 52 24 00 80 52 e1 03 15 aa 08 00 40 f9 e3 03 14 aa',
-            '60 0e 40 f9 82 0c 80 52 24 00 80 52 e1 03 15 aa 08 00 40 f9 03 00 80 d2'
-        )
         # Always emit uiccApplicationsEnablementChanged
         .sig_replace('88 58 9D 52 1F 00 08 6B AB 01 00 54', '88 58 9D 52 1F 00 08 6B 1F 20 03 D5')
         .sig_replace('88 58 9D 52 FF 02 08 6B AB 01 00 54', '88 58 9D 52 FF 02 08 6B 1F 20 03 D5'),

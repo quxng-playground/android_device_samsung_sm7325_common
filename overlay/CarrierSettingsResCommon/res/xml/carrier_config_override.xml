@@ -6,4 +6,14 @@
 <carrier_config>
     <!-- The AP ImsMedia path has no integrated EVS codec. -->
     <boolean name="imsvoice.audio_evs_support_bool" value="false" />
+
+    <!-- The Samsung RIL (HAL 1.5) never reports QoS sessions to Android, so the IMS stack
+         waits out imsvoice.dedicated_bearer_wait_timer_millis_int (8 s) and drops every call
+         with QosReserveFailed. Do not wait for a dedicated-bearer confirmation. -->
+    <boolean name="imsvoice.voice_on_default_bearer_supported_bool" value="true" />
+    <boolean name="imsvoice.voice_qos_precondition_supported_bool" value="false" />
+
+    <!-- Viettel rejects CS USSD while VoLTE-registered on LTE (RIL failure_cause 135 after 30 s).
+         3 = USSD_OVER_IMS_PREFERRED -->
+    <int name="carrier_ussd_method_int" value="3" />
 </carrier_config>

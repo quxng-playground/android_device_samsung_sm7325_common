@@ -1,0 +1,7 @@
+runtime_resource_overlay {
+    name: "SystemUISm7325Overlay",
+    theme: "SystemUISm7325Overlay",
+    sdk_version: "current",
+    product_specific: true,
+    certificate: "platform",
+}
